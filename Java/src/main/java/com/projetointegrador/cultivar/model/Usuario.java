@@ -18,40 +18,41 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * 
  * @author marianatheml
- * @since 1.0
+ * @author bartramandu
+ * @since 1.1
  * 
  */
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	private Long id;
+
 	@NotBlank
 	@Size(min = 2, max = 100)
 	private String nome;
-	
+
 	@NotBlank
 	@Email
 	@Size(min = 5, max = 100)
 	private String email;
-	
+
 	@NotBlank
 	@Size(min = 8, max = 20)
 	private String senha;
-	
-	@OneToMany (mappedBy = "criador", cascade = CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("criador")
 	private List<Produto> meusProdutos;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -86,6 +87,5 @@ public class Usuario {
 	public void setMeusProdutos(List<Produto> meusProdutos) {
 		this.meusProdutos = meusProdutos;
 	}
-
 
 }
