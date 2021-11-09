@@ -13,42 +13,50 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * 
+ * @author marianatheml
+ * @author bartramandu
+ * @since 1.1
+ *
+ */
+
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	private Long id;
+
 	@NotBlank
 	@Size(min = 2, max = 100)
 	private String produto;
-	
+
 	@NotNull
 	private double valor;
-	
+
 	@NotNull
 	private int estoque;
-	
+
 	@NotNull
 	private double pesoUnitario;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fk_categoria")
 	@JsonIgnoreProperties("produtos")
 	private Categoria categoriaDoProduto;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fk_usuario")
 	@JsonIgnoreProperties("meusProdutos")
 	private Usuario criador;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -99,7 +107,5 @@ public class Produto {
 	public void setCriador(Usuario criador) {
 		this.criador = criador;
 	}
-	
-
 
 }
