@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projetointegrador.cultivar.model.UserLogin;
+import com.projetointegrador.cultivar.dtos.UserLoginDTO;
 import com.projetointegrador.cultivar.model.Usuario;
 import com.projetointegrador.cultivar.service.UsuarioService;
 
 /**
  * 
  * @author pedro
- * @since 1.0
+ * @author marianatheml
+ * @since 1.1
  */
 
 @RestController
@@ -30,7 +31,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@PostMapping("/logar")
-	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user){
+	public ResponseEntity<UserLoginDTO> Autentication(@RequestBody Optional<UserLoginDTO> user){
 		return usuarioService.Logar(user).map(resp->ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 				

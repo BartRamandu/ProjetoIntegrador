@@ -8,14 +8,16 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.projetointegrador.cultivar.model.UserLogin;
+
+import com.projetointegrador.cultivar.dtos.UserLoginDTO;
 import com.projetointegrador.cultivar.model.Usuario;
 import com.projetointegrador.cultivar.repository.UsuarioRepository;
 
 /**
  * 
  * @author pedro
- * @version 1.0
+ * @author marianatheml
+ * @version 1.1
  *
  */
 
@@ -35,7 +37,7 @@ public class UsuarioService {
 
 	}
 
-	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
+	public Optional<UserLoginDTO> Logar(Optional<UserLoginDTO> user) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -48,7 +50,7 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encodedAuth);
 
 				user.get().setToken(authHeader);
-				user.get().setNome(usuario.get().getNome());
+				user.get().setUsuario(usuario.get().getUsuario());
 
 				return user;
 			}

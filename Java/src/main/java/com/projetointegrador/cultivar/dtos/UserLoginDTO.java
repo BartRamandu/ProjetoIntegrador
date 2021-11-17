@@ -1,31 +1,25 @@
-package com.projetointegrador.cultivar.model;
+package com.projetointegrador.cultivar.dtos;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * 
- * @author pedro
- * @since 1.0
+ * @author marianatheml
+ * @version 1.0
  *
  */
 
-public class UserLogin {
-
-	private String nome;
-
+public class UserLoginDTO {
+	
+	@NotBlank(message = "Insert valid username")
 	private String usuario;
-
-	private String email;
-
+	
+	@NotBlank(message = "Insert valid password")
+	@Size(min = 8, max = 20)
 	private String senha;
 
 	private String token;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getUsuario() {
 		return usuario;
@@ -33,14 +27,6 @@ public class UserLogin {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getSenha() {
@@ -58,5 +44,6 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	
 
 }
