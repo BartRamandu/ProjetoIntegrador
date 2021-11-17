@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * 
  * @author marianatheml
  * @author bartramandu
- * @since 1.1
+ * @author pedro
+ * @since 1.2
  * 
  */
 
@@ -34,6 +35,10 @@ public class Usuario {
 	@NotBlank
 	@Size(min = 2, max = 100)
 	private String nome;
+
+	@NotBlank
+	@Size(min = 2, max = 100)
+	private String usuario;
 
 	@NotBlank
 	@Email
@@ -62,6 +67,14 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getEmail() {
