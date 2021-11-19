@@ -15,12 +15,15 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 
  * @author marianatheml
  * @author bartramandu
  * @author pedro
- * @since 1.2
+ * @author JadyLinnit
+ * @since 1.3
  * 
  */
 
@@ -36,6 +39,7 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String nome;
 
+	@ApiModelProperty(example = "email@email.com.br")
 	@NotBlank
 	@Size(min = 2, max = 100)
 	private String usuario;
