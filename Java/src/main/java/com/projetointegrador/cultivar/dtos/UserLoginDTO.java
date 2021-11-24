@@ -1,5 +1,9 @@
 package com.projetointegrador.cultivar.dtos;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -12,21 +16,56 @@ import javax.validation.constraints.Size;
 
 public class UserLoginDTO {
 	
-	@NotBlank(message = "Insert valid username")
-	private String usuario;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	@NotBlank(message = "Insert valid password")
-	@Size(min = 8, max = 20)
+	@NotBlank(message = "Digite um nome.")
+	@Size(min = 2, max = 50, message = "Seu nome deve conter de 2 a 50 caracteres.")
+	private String nome;
+	
+	@NotBlank(message = "Digite um e-mail.")
+	@Email(message = "Digite um e-mail válido.")
+	private String email;
+	
+	private String foto;
+	
+	@NotBlank(message = "Digite uma senha.")
+	@Size(min = 8, max = 20, message = "Sua senha deve conter no mínimo 8 caracteres (até 20).")
 	private String senha;
-
+	
 	private String token;
 
-	public String getUsuario() {
-		return usuario;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String usuario) {
+		this.email = usuario;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {

@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author bartramandu
  * @author pedro
  * @author JadyLinnit
- * @since 1.3
+ * @since 1.4
  * 
  */
 
@@ -35,22 +35,20 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "Digite um nome.")
 	@Size(min = 2, max = 100)
 	private String nome;
 
 	@ApiModelProperty(example = "email@email.com.br")
-	@NotBlank
-	@Size(min = 2, max = 100)
-	private String usuario;
-
-	@NotBlank
+	@NotBlank(message = "Digite um e-mail.")
 	@Email
 	@Size(min = 5, max = 100)
 	private String email;
+	
+	private String foto;
 
 	@NotBlank
-	@Size(min = 8, max = 20)
+	@Size(min = 8, max = 100)
 	private String senha;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
@@ -73,20 +71,20 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {
@@ -103,6 +101,6 @@ public class Usuario {
 
 	public void setMeusProdutos(List<Produto> meusProdutos) {
 		this.meusProdutos = meusProdutos;
-	}
+	}	
 
 }
