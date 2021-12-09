@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author bartramandu
  * @author pedro
  * @author JadyLinnit
- * @since 1.3
+ * @since 1.5
  * 
  */
 
@@ -35,27 +35,41 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "Digite um nome.")
 	@Size(min = 2, max = 100)
 	private String nome;
 
 	@ApiModelProperty(example = "email@email.com.br")
-	@NotBlank
-	@Size(min = 2, max = 100)
-	private String usuario;
-
-	@NotBlank
+	@NotBlank(message = "Digite um e-mail.")
 	@Email
 	@Size(min = 5, max = 100)
 	private String email;
+	
+	@Size(min = 5, max = 200, message = "O atributo foto recebe link onde uma imagem em um banco de dados existe.")
+	private String foto;
+	
+	@Size(min = 5, max = 100, message = "O atributo tipo tem de ter no mínimo 05" + " e no máximo 100 caracteres.")
+	private String tipo;
 
 	@NotBlank
-	@Size(min = 8, max = 20)
+	@Size(min = 8, max = 100)
 	private String senha;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("criador")
 	private List<Produto> meusProdutos;
+	
+	public Usuario(Long id,String nome,String email,String foto,String tipo,String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.foto = foto;
+		this.tipo = tipo;
+		this.senha = senha;
+	}
+	
+	public Usuario() {
+	}
 
 	public Long getId() {
 		return id;
@@ -73,20 +87,28 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getSenha() {

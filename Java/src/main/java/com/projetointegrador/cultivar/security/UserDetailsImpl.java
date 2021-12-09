@@ -22,7 +22,7 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 
 	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getUsuario();
+		this.userName = user.getEmail();
 		this.password = user.getSenha();
 	}
 
