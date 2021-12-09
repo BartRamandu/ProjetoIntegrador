@@ -19,7 +19,8 @@ import com.projetointegrador.cultivar.repository.UsuarioRepository;
  * 
  * @author pedro
  * @author marianatheml
- * @version 1.2
+ * @author bartramandu
+ * @version 1.3
  *
  */
 
@@ -61,6 +62,7 @@ public class UsuarioService {
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
+				usuarioLogin.get().setTipo(usuario.get().getTipo());
 				usuarioLogin.get().setToken(generatorBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
 
 				return usuarioLogin;

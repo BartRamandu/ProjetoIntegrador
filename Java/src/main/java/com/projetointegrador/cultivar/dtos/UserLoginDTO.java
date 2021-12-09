@@ -10,7 +10,8 @@ import javax.validation.constraints.Size;
 /**
  * 
  * @author marianatheml
- * @version 1.0
+ * @author bartramandu
+ * @version 1.1
  *
  */
 
@@ -28,7 +29,11 @@ public class UserLoginDTO {
 	@Email(message = "Digite um e-mail válido.")
 	private String email;
 	
+	@Size(min = 5, max = 200, message = "O atributo foto recebe link onde uma imagem em um banco de dados existe.")
 	private String foto;
+	
+	@Size(min = 5, max = 100, message = "O atributo tipo tem de ter no mínimo 05" + " e no máximo 100 caracteres.")
+	private String tipo;
 	
 	@NotBlank(message = "Digite uma senha.")
 	@Size(min = 8, max = 20, message = "Sua senha deve conter no mínimo 8 caracteres (até 20).")
@@ -68,6 +73,14 @@ public class UserLoginDTO {
 		this.foto = foto;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	public String getSenha() {
 		return senha;
 	}
@@ -83,6 +96,5 @@ public class UserLoginDTO {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
 
 }
