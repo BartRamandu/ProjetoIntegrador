@@ -34,14 +34,6 @@ public class Categoria {
 	@Size(min = 2, max = 100)
 	private String categoria;
 	
-	@NotBlank
-	@Size(min = 2, max = 100)
-	private String nomeVendedor;
-	
-	@NotBlank
-	@Size(min = 2, max = 100)
-	private String formaPagamento;
-	
 	@OneToMany (mappedBy = "categoriaDoProduto", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoriaDoProduto")
 	private List<Produto> produtos;
@@ -60,22 +52,6 @@ public class Categoria {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
-	}
-
-	public String getNomeVendedor() {
-		return nomeVendedor;
-	}
-
-	public void setNomeVendedor(String nomeVendedor) {
-		this.nomeVendedor = nomeVendedor;
-	}
-
-	public String getFormaPagamento() {
-		return formaPagamento;
-	}
-
-	public void setFormaPagamento(String formaPagamento) {
-		this.formaPagamento = formaPagamento;
 	}
 
 	public List<Produto> getProdutos() {
