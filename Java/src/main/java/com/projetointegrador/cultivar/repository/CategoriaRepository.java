@@ -19,6 +19,4 @@ import com.projetointegrador.cultivar.model.Categoria;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 	
 	public List<Categoria> findAllByCategoriaContainingIgnoreCase (String categoria);
-	
-	public List<Categoria> findAllByNomeVendedorContainingIgnoreCase (String nomeVendedor);
 }

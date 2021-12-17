@@ -21,7 +21,6 @@ public class UserLoginDTO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "Digite um nome.")
 	@Size(min = 2, max = 50, message = "Seu nome deve conter de 2 a 50 caracteres.")
 	private String nome;
 	
@@ -36,7 +35,7 @@ public class UserLoginDTO {
 	private String tipo;
 	
 	@NotBlank(message = "Digite uma senha.")
-	@Size(min = 8, max = 20, message = "Sua senha deve conter no mínimo 8 caracteres (até 20).")
+	@Size(min = 8, max = 50, message = "Sua senha deve conter no mínimo 8 caracteres (até 50).")
 	private String senha;
 	
 	private String token;

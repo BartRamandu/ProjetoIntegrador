@@ -41,6 +41,8 @@ public class Produto {
 
 	@NotNull
 	private double pesoUnitario;
+	
+	private String fotoProduto;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_categoria")
@@ -90,6 +92,14 @@ public class Produto {
 
 	public void setPesoUnitario(double pesoUnitario) {
 		this.pesoUnitario = pesoUnitario;
+	}
+
+	public String getFotoProduto() {
+		return fotoProduto;
+	}
+
+	public void setFotoProduto(String fotoProduto) {
+		this.fotoProduto = fotoProduto;
 	}
 
 	public Categoria getCategoriaDoProduto() {

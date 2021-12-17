@@ -52,7 +52,7 @@ public class Usuario {
 	private String tipo;
 
 	@NotBlank
-	@Size(min = 8, max = 100)
+	@Size(min = 8, max = 150)
 	private String senha;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
